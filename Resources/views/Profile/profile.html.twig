@@ -1,0 +1,77 @@
+{% extends "SpiritDevDBoxUserBundle::layout.html.twig" %}
+
+{% block title %}{{ 'pagetitle.profile'|trans }} {{ parent() }}{% endblock %}
+
+{% block fos_user_content %}
+
+    <h1 class="page-header">{{ 'profile.pageheader'|trans }} {{ user.username }}</h1>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+
+            {# Common informations #}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="slot">
+                        <h3 class="page-header">{{ 'profile.myinfo.slotlabel'|trans }}</h3>
+                        {% include "SpiritDevDBoxUserBundle:Profile:show_content.html.twig" %}
+                    </div>
+                </div>
+            </div>
+
+            {# Git informations #}
+            {% if gitinfo is not null %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="slot">
+                            <h3 class="page-header">{{ 'profile.gitinfo.slotlabel'|trans }}</h3>
+                            {% include "SpiritDevDBoxUserBundle:Profile:show_gitcontent.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {# Redmine informations #}
+            {% if gitinfo is not null %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="slot">
+                            <h3 class="page-header">{{ 'profile.pminfo.slotlabel'|trans }}</h3>
+                            {% include "SpiritDevDBoxUserBundle:Profile:show_redminecontent.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="slot">
+                        <h3 class="page-header">{{ 'profile.settings.slotlabel'|trans }}</h3>
+                        {{ render_hinclude(path('spirit_dev_dbox_user_bundleuser_profile_settings'), {'default': 'Loading...'}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="slot">
+                        <h3 class="page-header">{{ 'profile.info.slotlabel'|trans }}</h3>
+                        {{ render_hinclude(path('spirit_dev_dbox_user_bundleuser_profile_edit'), {'default': 'Loading...'}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="slot">
+                        <h3 class="page-header">{{ 'profile.pass.slotlabel'|trans }}</h3>
+                        {{ render_hinclude(path('spirit_dev_dbox_user_bundleuser_profile_editpassword'), {'default': 'Loading...'}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock fos_user_content %}

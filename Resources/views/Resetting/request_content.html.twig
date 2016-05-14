@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <form class="form-horizontal" action="{{ path('fos_user_resetting_send_email') }}" method="POST">
+            <div>
+                {% if invalid_username is defined %}
+                    <div class="FB-error">
+                        <p class="text-center">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label class="col-sm-5 control-label"
+                           for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="username" name="username" required="required"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-7">
+                    <input class="btn btn-warning" type="submit"
+                           value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

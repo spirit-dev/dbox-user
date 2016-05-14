@@ -1,0 +1,64 @@
+{% extends "SpiritDevDBoxUserBundle::layout.html.twig" %}
+
+{% block title %}{{ 'pagetitle.login'|trans }} {{ parent() }}{% endblock %}
+
+{% block fos_user_content %}
+
+    {% if error %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <div class="FB-error">
+                        {{ error|trans }}
+                    </div>
+                    <div>
+                        {{ 'login.forgotten.password.sentense'|trans }}
+                        <a href="{{ path('fos_user_resetting_request') }}">{{ 'login.forgotten.password.link'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+        <form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="username">Username</label>
+
+                <div class="col-sm-offset-1 col-sm-9">
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"
+                           required="required"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="password">Password</label>
+
+                <div class="col-sm-offset-1 col-sm-9">
+                    <input class="form-control" type="password" id="password" name="_password" required="required"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/> Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <input class="btn btn-default" type="submit" id="_submit" name="_submit"
+                           value="Submit" data-loading-text="Connecting..." autocomplete="off"
+                           onclick="if($('#password').val() != '' && $('#username').val() != '') {$(this).button('loading');}"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock fos_user_content %}

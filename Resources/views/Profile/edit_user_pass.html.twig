@@ -1,0 +1,36 @@
+<form class="form-horizontal" action="{{ path('spirit_dev_dbox_user_bundleuser_profile_editpassword') }}" {{ form_enctype(form) }}
+      method="POST">
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.currentpass) }}
+        <div class="col-sm-offset-1 col-sm-8">
+            {{ form_widget(form.currentpass) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.newpass) }}
+        <div class="col-sm-offset-1 col-sm-8">
+            {{ form_widget(form.newpass) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.newpassverify) }}
+        <div class="col-sm-offset-1 col-sm-8">
+            {{ form_widget(form.newpassverify) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            {{ form_widget(form.save) }}
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+</form>

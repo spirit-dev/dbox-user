@@ -1,0 +1,7 @@
+{% extends "SpiritDevDBoxUserBundle::layout.html.twig" %}
+
+{% block title %}{{ 'pagetitle.request'|trans }} {{ parent() }}{% endblock %}
+
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}

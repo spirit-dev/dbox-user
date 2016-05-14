@@ -1,0 +1,45 @@
+<form class="form-horizontal" action="{{ path('spirit_dev_dbox_user_bundleuser_profile_edit') }}" {{ form_enctype(form) }}
+      method="POST">
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        <div class="col-sm-offset-1 col-sm-9">
+            {{ form_widget(form.email) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.lastname) }}
+        <div class="col-sm-offset-1 col-sm-9">
+            {{ form_widget(form.lastname) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.firstname) }}
+        <div class="col-sm-offset-1 col-sm-9">
+            {{ form_widget(form.firstname) }}
+        </div>
+    </div>
+
+    {% form_theme form ':VichUploaderBundle/Form:fields.html.twig' %}
+
+    <div class="form-group">
+        {{ form_label(form.imageFile) }}
+        <div class="col-sm-offset-1 col-sm-9">
+            {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            {{ form_widget(form.save) }}
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+</form>

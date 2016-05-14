@@ -1,0 +1,41 @@
+{% include('SpiritDevDBoxPortalBundle:Mailer:mailLayout.html.twig') %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-sm-12">
+            <h1>{{ 'mail.global.header'|trans|raw }}</h1>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <h3>{{ 'mail.global.hello_user'|trans({
+                    '%firstname%': user.firstname,
+                    '%lastname%': user.lastname}) }}</h3>
+
+            <p>{{ 'mail.profile_pass.slot1'|trans }}</p>
+
+            <p>{{ 'mail.global.connect_app'|trans }}</p>
+
+            <a class="btn btn-success btn-small" href="{{ app_url }}"
+               target="_blank">Ecosystem V2</a>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+            <h4>{{ 'mail.global.footer.slot1'|trans }}</h4>
+            <h4>{{ 'mail.global.footer.slot2'|trans }}</h4>
+        </div>
+
+    </div>
+
+{% endblock content %}

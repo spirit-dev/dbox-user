@@ -1,0 +1,63 @@
+{% extends('::base.html.twig') %}
+
+{% block stylesheets %}
+    {% stylesheets
+    'bundles/portal/lib/bootstrap3/css/bootstrap.min.css'
+    'bundles/portal/css/common.css'
+    'bundles/portal/css/sidebar.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+    '@SpiritDevDBoxPortalBundle/Resources/public/lib/jquery2/jquery-2.1.4.js'
+    '@SpiritDevDBoxPortalBundle/Resources/public/lib/bootstrap3/js/bootstrap.min.js'
+    '@SpiritDevDBoxPortalBundle/Resources/public/lib/hinclude-0.9.5/hinclude.js'
+    'bundles/portal/js/common.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}
+
+{% block body %}
+
+    <div class="off-canvas-wrap" data-offcanvas>
+        <div class="main-content inner-wrap">
+
+            {% include('SpiritDevDBoxPortalBundle:Common:menu.html.twig') %}
+
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div id="left-content" class="col-sm-2 col-md-2">
+                        {% include('SpiritDevDBoxPortalBundle:Common:left-menu.html.twig') %}
+                    </div>
+
+                    <div id="central-content" class="col-sm-10 col-md-10 main">
+
+                        {% for type, messages in app.session.flashBag.all %}
+                            {% for message in messages %}
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="text-center">
+                                            <div class="FB-{{ type }}">
+                                                {{ message|trans }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                        <div class="row">
+                            {% block fos_user_content %}
+                            {% endblock fos_user_content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock body %}

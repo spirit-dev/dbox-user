@@ -1,0 +1,35 @@
+<div class="fos_user_user_show">
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.myinfo.username'|trans }}</b></div>
+        <div class="col-sm-7">{{ user.username }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.myinfo.email'|trans }}</b></div>
+        <div class="col-sm-7">{{ user.email }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.myinfo.lastname'|trans }}</b></div>
+        <div class="col-sm-7">{{ user.lastName }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.myinfo.firstname'|trans }}</b></div>
+        <div class="col-sm-7">{{ user.firstName }}</div>
+    </div>
+
+    {% if user.imageName %}
+        <div class="row">
+            <div class="col-sm-5"><b>{{ 'profile.myinfo.avatar'|trans }}</b></div>
+            <div class="col-sm-7">
+                <img class="img-responsive"
+                     src="{{ vich_uploader_asset(user, 'imageFile')|imagine_filter('imgx80x64') }}"
+                     alt="{{ user.username }} thumbnail"/>
+            </div>
+        </div>
+    {% endif %}
+
+
+</div>

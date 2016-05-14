@@ -1,0 +1,52 @@
+<div class="fos_user_redmine_info">
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.pminfo.state.label'|trans }}</b></div>
+        <div class="col-sm-7">{{ pminfo.user.status ? 'profile.pminfo.state.active'|trans : 'profile.pminfo.state.unactive'|trans }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.pminfo.profileurl'|trans }}</b></div>
+        <div class="col-sm-7">
+            {{ pmbaseurl }}
+            <a class="btn btn-sm btn-link" href="{{ pmbaseurl }}" target="_blank">
+                <span class="glyphicon glyphicon-link"></span>
+            </a>
+        </div>
+    </div>
+
+    {% if pminfo.user.memberships | length > 0 %}
+        <div class="row">
+            <div class="col-sm-5"><b>{{ 'profile.pminfo.membership.label'|trans }}</b></div>
+            <div class="col-sm-7">
+
+                <table class="table pm-info-table">
+                    <thead>
+                    <tr>
+                        <th>{{ 'profile.pminfo.membership.project'|trans }}</th>
+                        <th>{{ 'profile.pminfo.membership.role'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for membership in pminfo.user.memberships %}
+                        <tr>
+                            <td>{{ membership.project.name }}</td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    {% for role in membership.roles %}
+                                        <li>{{ role.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul class="list-unstyled">
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+</div>

@@ -1,0 +1,90 @@
+pagetitle:
+    profile: Profile
+    checkmail: Check mail
+    requesterror: Request error
+    request: Request
+    reset: Reset
+    login: Login
+
+login:
+    forgotten:
+        password:
+            sentense: "You've forgot your password?"
+            link: Follow this link
+
+# Password resetting
+resetting:
+    email:
+        subject: EcosystemV2 Reset Password
+        message: |
+            Hello %username%!
+
+            You have requested a password reset for your account.
+            To reset your password - please visit %confirmationUrl%
+
+            Regards,
+            the Tools Team.
+    flash:
+        success: Your profile have been well updated
+
+profile:
+    pageheader: Profile
+    pass:
+        slotlabel: Password update
+        currentpass: Current password
+        newpass: New password
+        newpassverify: Verification
+        save: Update password
+    info:
+        slotlabel: Update my informations
+        email: E-mail
+        firstname: Firstname
+        lastname: Lastname
+        avatar: Avatar
+        submit: Update my informations
+    settings:
+        slotlabel: Settings
+        skip_intro: Always skip intro
+        submit: Update settings
+    myinfo:
+        slotlabel: My informations
+        username: Username
+        email: E-Mail
+        firstname: Firstname
+        lastname: Lastname
+        avatar: Avatar
+    gitinfo:
+        slotlabel: Git informations
+        state: State
+        profileurl: Profile URL
+    pminfo:
+        slotlabel: PM informations
+        state:
+            label: State
+            active: Active
+            unactive: Deactivated
+        profileurl: Profile URL
+        membership:
+            label: Membership
+            project: Project
+            role: Role(s)
+
+flashbag:
+    edit_profile:
+        success: Your profile have been well updated!
+        error: Sorry an error occured while updating your profile.
+    edit_password:
+        success: Your passord have been well updated!
+        error: Sorry an error occured while updating your password.
+        verification_error: Sorry your passwords doesn't match! Please retry.
+        match_error: Sorry you're not allowed to update your password with the old one! Please retry.
+        pass_error: Sorry your current password is incorrect! Please retry.
+
+mail:
+    global:
+        hello_user: Hello %firstname% %lastname% !
+        connect_app: You can connect to the application by following this link :
+    profile_info:
+        slot1: This mail is here to confirm that your profile have been well updated.
+    profile_pass:
+        slot1: This mail is here to confirm that your pass have been well updated.

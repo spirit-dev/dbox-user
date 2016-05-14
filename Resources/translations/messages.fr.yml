@@ -1,0 +1,19 @@
+# Login page
+login:
+    forgotten:
+        password:
+            sentense: "Vous avez oublié votre mot de passe?"
+            link: suivez ce liens
+
+# Password resetting
+resetting:
+    email:
+        subject: EcosystemV2 Reset mot de passe
+        message: |
+            Bonjour %username%!
+
+            Vous avez émis une requête de restauration de votre mot de passe.
+            Pour le restaurer - suivez ce liens %confirmationUrl%
+
+            Cordialement,
+            the Tools Team.

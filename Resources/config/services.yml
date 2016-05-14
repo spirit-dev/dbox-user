@@ -1,0 +1,34 @@
+parameters:
+    spirit_dev_dbox_user_bundle.security.handler.login_success_handler.class: SpiritDev\Bundle\DBoxUserBundle\Security\Handler\LoginSuccessHandler
+    spirit_dev_dbox_user_bundle.ldap.ldap_driver.class: SpiritDev\Bundle\DBoxUserBundle\Ldap\LdapDriver
+
+services:
+    spirit_dev_dbox_user_bundle.handler.login_success_handler:
+        class:  %spirit_dev_dbox_user_bundle.security.handler.login_success_handler.class%
+        arguments:  [@router, @security.token_storage, @fr3d_ldap.ldap_manager, @doctrine.orm.entity_manager]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+
+    spirit_dev_dbox_user_bundle.ldap.ldap_driver:
+        class:  %spirit_dev_dbox_user_bundle.ldap.ldap_driver.class%
+        arguments: [@service_container]
+
+    spirit_dev_dbox_user_bundle.form.type.user_settings:
+        class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserSettingsType
+        tags:
+            - { name: form.type, alias: user_settings }
+
+    spirit_dev_dbox_user_bundle.form.type.user_info:
+        class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserInfoType
+        tags:
+            - { name: form.type, alias: user_info }
+
+    spirit_dev_dbox_user_bundle.form.type.user_pass_info:
+        class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserPassInfoType
+        tags:
+            - { name: form.type, alias: user_pass_info }
+
+    fos_user.resetting.form.handler:
+        class: SpiritDev\Bundle\DBoxUserBundle\Form\Handler\ResettingFormHandler
+        arguments: [@fos_user.resetting.form, @request_stack, @fos_user.user_manager, @spirit_dev_dbox_user_bundle.ldap.ldap_driver, @doctrine.orm.entity_manager]
+#        public: false

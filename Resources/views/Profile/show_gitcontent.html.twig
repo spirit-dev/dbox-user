@@ -1,0 +1,18 @@
+<div class="fos_user_git_info">
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.gitinfo.state'|trans }}</b></div>
+        <div class="col-sm-7">{{ gitinfo.state }}</div>
+        </div>
+
+    <div class="row">
+        <div class="col-sm-5"><b>{{ 'profile.gitinfo.profileurl'|trans }}</b></div>
+        <div class="col-sm-7">
+            {{ gitinfo.web_url }}
+            <a class="btn btn-sm btn-link" href="{{ gitinfo.web_url }}" target="_blank">
+                <span class="glyphicon glyphicon-link"></span>
+            </a>
+        </div>
+    </div>
+
+</div>
