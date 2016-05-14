@@ -2,9 +2,9 @@
 
 {% block stylesheets %}
     {% stylesheets
-    'bundles/portal/lib/bootstrap3/css/bootstrap.min.css'
-    'bundles/portal/css/common.css'
-    'bundles/portal/css/sidebar.css'
+    'bundles/spiritdevdboxportal/lib/bootstrap3/css/bootstrap.min.css'
+    'bundles/spiritdevdboxportal/css/common.css'
+    'bundles/spiritdevdboxportal/css/sidebar.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
@@ -15,7 +15,7 @@
     '@SpiritDevDBoxPortalBundle/Resources/public/lib/jquery2/jquery-2.1.4.js'
     '@SpiritDevDBoxPortalBundle/Resources/public/lib/bootstrap3/js/bootstrap.min.js'
     '@SpiritDevDBoxPortalBundle/Resources/public/lib/hinclude-0.9.5/hinclude.js'
-    'bundles/portal/js/common.js' %}
+    '@SpiritDevDBoxPortalBundle/Resources/public/js/common.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock javascripts %}
