@@ -56,7 +56,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface {
         }
 
         // Redirect
-        $referer_url = $this->router->generate('spirit_dev_dbox_user_bundle_introduction');
+        $referer_url = $this->router->generate('spirit_dev_dbox_portal_bundle_introduction');
         return new RedirectResponse($referer_url);
     }
 }
