@@ -1,4 +1,23 @@
 <?php
+/**
+ * Copyright (c) 2016. Spirit-Dev
+ * Licensed under GPLv3 GNU License - http://www.gnu.org/licenses/gpl-3.0.html
+ *    _             _
+ *   /_`_  ._._/___/ | _
+ * . _//_//// /   /_.'/_'|/
+ *    /
+ *
+ * Since 2K10 until today
+ *
+ * Hex            53 70 69 72 69 74 2d 44 65 76
+ *
+ * By             Jean Bordat
+ * Twitter        @Ji_Bay_
+ * Mail           <bordat.jean@gmail.com>
+ *
+ * File           ProfileController.php
+ * Updated the    16/05/16 12:28
+ */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Controller;
 
@@ -36,7 +55,7 @@ class ProfileController extends Controller {
         $pmApi = $this->get('spirit_dev_dbox_portal_bundle.api.redmine');
         if ($user->getRedmineId()) {
             $pmUserInfo = $pmApi->showUser($user->getRedmineId());
-            $pmUserUri = $this->getParameter('redmine_api')['protocol'] . $this->getParameter('redmine_api')['url'] . "/my/page";
+            $pmUserUri = $this->getParameter('spirit_dev_d_box_portal.redmine_api.protocol') . $this->getParameter('spirit_dev_d_box_portal.redmine_api.url') . "/my/page";
         } else {
             $pmUserInfo = null;
             $pmUserUri = null;

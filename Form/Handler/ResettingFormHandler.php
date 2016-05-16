@@ -15,19 +15,45 @@ use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Form\Model\ChangePassword;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
+use SpiritDev\Bundle\DBoxUserBundle\Ldap\LdapDriver;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use SpiritDev\Bundle\DBoxUserBundle\Ldap\LdapDriver;
-use SpiritDev\Bundle\DBoxUserBundle\Entity\User as User;
 
+/**
+ * Class ResettingFormHandler
+ * @package SpiritDev\Bundle\DBoxUserBundle\Form\Handler
+ */
 class ResettingFormHandler {
+    /**
+     * @var
+     */
     protected $request;
+    /**
+     * @var UserManagerInterface
+     */
     protected $userManager;
+    /**
+     * @var FormInterface
+     */
     protected $form;
 
+    /**
+     * @var LdapDriver
+     */
     protected $ldap;
+    /**
+     * @var EntityManager
+     */
     protected $em;
 
+    /**
+     * ResettingFormHandler constructor.
+     * @param FormInterface $form
+     * @param RequestStack $request
+     * @param UserManagerInterface $userManager
+     * @param LdapDriver $ldap
+     * @param EntityManager $em
+     */
     public function __construct(FormInterface $form, RequestStack $request, UserManagerInterface $userManager, LdapDriver $ldap, EntityManager $em) {
         $this->form = $form;
         $this->request = $request->getCurrentRequest();
@@ -44,6 +70,10 @@ class ResettingFormHandler {
         return $this->form->getData()->new;
     }
 
+    /**
+     * @param UserInterface $user
+     * @return bool
+     */
     public function process(UserInterface $user) {
         $this->form->setData(new ChangePassword());
 
@@ -60,6 +90,9 @@ class ResettingFormHandler {
         return false;
     }
 
+    /**
+     * @param UserInterface $user
+     */
     protected function onSuccess(UserInterface $user) {
         // Disabling user password registration
 //        $user->setPlainPassword($this->getNewPassword());
