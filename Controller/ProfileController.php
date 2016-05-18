@@ -6,17 +6,17 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *
+ *  
  * Since 2K10 until today
- *
+ *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
- *
+ *  
  * By             Jean Bordat
  * Twitter        @Ji_Bay_
  * Mail           <bordat.jean@gmail.com>
- *
+ *  
  * File           ProfileController.php
- * Updated the    16/05/16 12:28
+ * Updated the    18/05/16 11:07
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Controller;
@@ -133,7 +133,7 @@ class ProfileController extends Controller {
      * @return string
      */
     protected function getRedirectionUrl() {
-        return $this->container->get('router')->generate('spirit_dev_dbox_user_bundle_user_profile_show');
+        return $this->container->get('router')->generate('spirit_dev_dbox_user_bundle_profile_show');
     }
 
     /**

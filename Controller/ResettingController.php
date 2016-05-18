@@ -6,7 +6,7 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *    
+ *  
  * Since 2K10 until today
  *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           ResettingController.php
- * Updated the    15/05/16 11:47
+ * Updated the    18/05/16 11:07
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Controller;
@@ -167,7 +167,7 @@ class ResettingController extends ContainerAware {
      * @return string
      */
     protected function getRedirectionUrl(UserInterface $user) {
-        return $this->container->get('router')->generate('spirit_dev_dbox_user_bundle_user_profile_show');
+        return $this->container->get('router')->generate('spirit_dev_dbox_user_bundle_profile_show');
     }
 
     /**
