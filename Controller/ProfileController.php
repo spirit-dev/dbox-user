@@ -37,7 +37,7 @@ class ProfileController extends Controller {
 
     /**
      * @Security("has_role('ROLE_USER')")
-     * @Route("/", name="spirit_dev_dbox_user_bundle_user_profile_show")
+     * @Route("/", name="spirit_dev_dbox_user_bundle_profile_show")
      */
     public function showAction() {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
@@ -71,7 +71,7 @@ class ProfileController extends Controller {
 
     /**
      * @Security("has_role('ROLE_USER')")
-     * @Route("/editinfos", name="spirit_dev_dbox_user_bundle_user_profile_edit")
+     * @Route("/editinfos", name="spirit_dev_dbox_user_bundle_profile_edit")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -138,7 +138,7 @@ class ProfileController extends Controller {
 
     /**
      * @Security("has_role('ROLE_USER')")
-     * @Route("/editpassword", name="spirit_dev_dbox_user_bundle_user_profile_editpassword")
+     * @Route("/editpassword", name="spirit_dev_dbox_user_bundle_profile_editpassword")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -208,7 +208,7 @@ class ProfileController extends Controller {
 
     /**
      * @Security("has_role('ROLE_USER')")
-     * @Route("/editsettings", name="spirit_dev_dbox_user_bundle_user_profile_settings")
+     * @Route("/editsettings", name="spirit_dev_dbox_user_bundle_profile_settings")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
