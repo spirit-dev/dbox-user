@@ -6,7 +6,7 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *    
+ *  
  * Since 2K10 until today
  *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
@@ -16,11 +16,12 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           SpiritDevDBoxUserBundle.php
- * Updated the    15/05/16 11:47
+ * Updated the    06/06/16 15:58
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle;
 
+use SpiritDev\Bundle\DBoxUserBundle\Lib\Globals;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -33,5 +34,18 @@ class SpiritDevDBoxUserBundle extends Bundle {
      */
     public function getParent() {
         return 'FOSUserBundle';
+    }
+
+    /**
+     *
+     */
+    public function boot() {
+        // Set some static globals
+        // Usefull for entity injections
+
+        // Set default language
+        Globals::setDefaultLanguage($this->container->getParameter('spirit_dev_d_box_user.user_management.default_language'));
+        // Set default roles
+        Globals::setDefaultRoles($this->container->getParameter('spirit_dev_d_box_user.user_management.default_role'));
     }
 }

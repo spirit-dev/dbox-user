@@ -6,17 +6,17 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *
+ *  
  * Since 2K10 until today
- *
+ *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
- *
+ *  
  * By             Jean Bordat
  * Twitter        @Ji_Bay_
  * Mail           <bordat.jean@gmail.com>
- *
+ *  
  * File           Configuration.php
- * Updated the    15/05/16 11:47
+ * Updated the    06/06/16 15:58
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\DependencyInjection;
@@ -35,11 +35,38 @@ class Configuration implements ConfigurationInterface {
      */
     public function getConfigTreeBuilder() {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('user');
+        $rootNode = $treeBuilder->root('spirit_dev_d_box_user');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
+        $rootNode
+            ->children()
+            ->arrayNode('ldap_driver')
+            ->children()
+            ->arrayNode('driver')
+            ->children()
+            ->scalarNode('host')->end()
+            ->integerNode('port')->end()
+            ->scalarNode('username')->end()
+            ->scalarNode('password')->end()
+            ->end()
+            ->end()
+            ->arrayNode('user')
+            ->children()
+            ->scalarNode('basedn')->end()
+            ->end()
+            ->end()
+            ->scalarNode('provider')->end()
+            ->end()
+            ->end()
+            ->arrayNode('user_management')
+            ->scalarNode('default_language')->defaultValue('en_US')->end()
+            ->arrayNode('default_role')
+            ->defaultValues(array('ROLE_USER'))
+            ->prototype('scalar')->end()
+            ->end()
+            ->end();
 
         return $treeBuilder;
     }

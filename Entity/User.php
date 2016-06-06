@@ -6,17 +6,17 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *
+ *  
  * Since 2K10 until today
- *
+ *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
- *
+ *  
  * By             Jean Bordat
  * Twitter        @Ji_Bay_
  * Mail           <bordat.jean@gmail.com>
- *
+ *  
  * File           User.php
- * Updated the    15/05/16 11:47
+ * Updated the    06/06/16 15:58
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Entity;
@@ -26,6 +26,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 use FR3D\LdapBundle\Model\LdapUserInterface as LdapUserInterface;
 use SpiritDev\Bundle\DBoxPortalBundle\Entity\Communication;
+use SpiritDev\Bundle\DBoxUserBundle\Lib\Globals;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -117,11 +118,19 @@ class User extends BaseUser implements LdapUserInterface {
      * User constructor.
      */
     public function __construct() {
+        // Construct parent
         parent::__construct();
-        if (empty($this->roles)) {
-            $this->roles[] = 'ROLE_USER';
-        }
+        // Set communications as an array
         $this->viewedCommunications = new ArrayCollection();
+        // Set default user role
+        if (empty($this->roles)) {
+//            $this->roles[] = 'ROLE_USER';
+            $this->roles[] = Globals::getDefaultRoles();
+        }
+        // Set dafault user language
+        if (empty($this->language)) {
+            $this->language = Globals::getDefaultLanguage();
+        }
     }
 
     /**
