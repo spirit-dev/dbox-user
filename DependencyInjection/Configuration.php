@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           Configuration.php
- * Updated the    06/06/16 16:18
+ * Updated the    06/06/16 17:07
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\DependencyInjection;
@@ -60,14 +60,14 @@ class Configuration implements ConfigurationInterface {
                 ->scalarNode('provider')->end()
             ->end()
         ->end()
-        ->arrayNode('user_management')
-            ->children()
-                ->scalarNode('default_language')->defaultValue('en_US')->end()
-                ->arrayNode('default_role')
-                    ->defaultValue(array('ROLE_USER'))
-                    ->prototype('scalar')->end()
-                ->end()
+            ->scalarNode('default_language')
+            ->treatNullLike('en_US')
+            ->defaultValue('en_US')
             ->end()
+            ->arrayNode('default_role')
+            ->treatNullLike(['ROLE_USER'])
+            ->defaultValue(['ROLE_USER'])
+            ->prototype('scalar')->end()
         ->end()
         ;
 

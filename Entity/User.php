@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           User.php
- * Updated the    06/06/16 15:58
+ * Updated the    06/06/16 17:02
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Entity;
@@ -124,8 +124,7 @@ class User extends BaseUser implements LdapUserInterface {
         $this->viewedCommunications = new ArrayCollection();
         // Set default user role
         if (empty($this->roles)) {
-//            $this->roles[] = 'ROLE_USER';
-            $this->roles[] = Globals::getDefaultRoles();
+            $this->roles = Globals::getDefaultRoles();
         }
         // Set dafault user language
         if (empty($this->language)) {
