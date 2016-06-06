@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           SpiritDevDBoxUserExtension.php
- * Updated the    06/06/16 15:58
+ * Updated the    06/06/16 17:06
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\DependencyInjection;
@@ -57,9 +57,8 @@ class SpiritDevDBoxUserExtension extends Extension {
         $this->checkConfig($container, $config['ldap_driver']['user'], 'basedn', 'ldap_driver.user.basedn', true);
         $this->checkConfig($container, $config['ldap_driver'], 'provider', 'ldap_driver.provider', true);
         // Checking user manager
-        $this->checkConfig($container, $config, 'user_management', 'user_management', false);
-        $this->checkConfig($container, $config['user_management'], 'default_language', 'user_management.default_language', true);
-        $this->checkConfig($container, $config['user_management'], 'default_role', 'user_management.default_role', true);
+        $this->checkConfig($container, $config, 'default_language', 'user_management.default_language', true);
+        $this->checkConfig($container, $config, 'default_role', 'user_management.default_role', true);
 
     }
 
