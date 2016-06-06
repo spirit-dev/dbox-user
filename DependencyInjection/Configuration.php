@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           Configuration.php
- * Updated the    06/06/16 15:58
+ * Updated the    06/06/16 16:18
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\DependencyInjection;
@@ -41,32 +41,35 @@ class Configuration implements ConfigurationInterface {
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
         $rootNode
+        ->children()
+        ->arrayNode('ldap_driver')
             ->children()
-            ->arrayNode('ldap_driver')
+                ->arrayNode('driver')
+                    ->children()
+                        ->scalarNode('host')->end()
+                        ->integerNode('port')->end()
+                        ->scalarNode('username')->end()
+                        ->scalarNode('password')->end()
+                    ->end()
+                ->end()
+                ->arrayNode('user')
+                    ->children()
+                        ->scalarNode('basedn')->end()
+                    ->end()
+                ->end()
+                ->scalarNode('provider')->end()
+            ->end()
+        ->end()
+        ->arrayNode('user_management')
             ->children()
-            ->arrayNode('driver')
-            ->children()
-            ->scalarNode('host')->end()
-            ->integerNode('port')->end()
-            ->scalarNode('username')->end()
-            ->scalarNode('password')->end()
+                ->scalarNode('default_language')->defaultValue('en_US')->end()
+                ->arrayNode('default_role')
+                    ->defaultValue(array('ROLE_USER'))
+                    ->prototype('scalar')->end()
+                ->end()
             ->end()
-            ->end()
-            ->arrayNode('user')
-            ->children()
-            ->scalarNode('basedn')->end()
-            ->end()
-            ->end()
-            ->scalarNode('provider')->end()
-            ->end()
-            ->end()
-            ->arrayNode('user_management')
-            ->scalarNode('default_language')->defaultValue('en_US')->end()
-            ->arrayNode('default_role')
-            ->defaultValues(array('ROLE_USER'))
-            ->prototype('scalar')->end()
-            ->end()
-            ->end();
+        ->end()
+        ;
 
         return $treeBuilder;
     }
