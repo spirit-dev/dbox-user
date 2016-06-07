@@ -6,23 +6,23 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *
+ *  
  * Since 2K10 until today
- *
+ *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
- *
+ *  
  * By             Jean Bordat
  * Twitter        @Ji_Bay_
  * Mail           <bordat.jean@gmail.com>
- *
+ *  
  * File           LdapDriver.php
- * Updated the    15/05/16 11:47
+ * Updated the    07/06/16 17:44
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Ldap;
 
 use SpiritDev\Bundle\DBoxUserBundle\Entity\User;
-use Zend\Stdlib\ErrorHandler;
+use Zend\Ldap\ErrorHandler;
 
 /**
  * Class LdapDriver
