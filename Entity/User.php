@@ -6,7 +6,7 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *  
+ *    
  * Since 2K10 until today
  *  
  * Hex            53 70 69 72 69 74 2d 44 65 76
@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *  
  * File           User.php
- * Updated the    06/06/16 17:02
+ * Updated the    08/06/16 19:58
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Entity;
@@ -81,6 +81,11 @@ class User extends BaseUser implements LdapUserInterface {
      * @ORM\Column(type="integer", nullable=true)
      */
     private $redmineId;
+
+    /**
+     * @@ORM\Column(type="boolean", nullable=true)
+     */
+    private $sonarManaged;
 
     /**
      * @var object
@@ -300,6 +305,20 @@ class User extends BaseUser implements LdapUserInterface {
      */
     public function setRedmineId($redmineId) {
         $this->redmineId = $redmineId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSonarManaged() {
+        return $this->sonarManaged;
+    }
+
+    /**
+     * @param mixed $sonarManaged
+     */
+    public function setSonarManaged($sonarManaged) {
+        $this->sonarManaged = $sonarManaged;
     }
 
     /**

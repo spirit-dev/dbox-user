@@ -1,6 +1,11 @@
 parameters:
     spirit_dev_dbox_user_bundle.security.handler.login_success_handler.class: SpiritDev\Bundle\DBoxUserBundle\Security\Handler\LoginSuccessHandler
     spirit_dev_dbox_user_bundle.ldap.ldap_driver.class: SpiritDev\Bundle\DBoxUserBundle\Ldap\LdapDriver
+    spirit_dev_dbox_user_bundle.form.type.user_settings.class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserSettingsType
+    spirit_dev_dbox_user_bundle.form.type.user_info.class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserInfoType
+    spirit_dev_dbox_user_bundle.form.type.user_pass_info.class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserPassInfoType
+    fos_user.resetting.form.handler.class: SpiritDev\Bundle\DBoxUserBundle\Form\Handler\ResettingFormHandler
+    spirit_dev_dbox_user_bundle.security.interactive_login_listener.class: SpiritDev\Bundle\DBoxUserBundle\Security\Handler\InteractiveLoginListener
 
 services:
     spirit_dev_dbox_user_bundle.handler.login_success_handler:
@@ -14,21 +19,28 @@ services:
         arguments: [@service_container]
 
     spirit_dev_dbox_user_bundle.form.type.user_settings:
-        class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserSettingsType
+        class: %spirit_dev_dbox_user_bundle.form.type.user_settings.class%
         tags:
             - { name: form.type, alias: user_settings }
 
     spirit_dev_dbox_user_bundle.form.type.user_info:
-        class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserInfoType
+        class: %spirit_dev_dbox_user_bundle.form.type.user_info.class%
         tags:
             - { name: form.type, alias: user_info }
 
     spirit_dev_dbox_user_bundle.form.type.user_pass_info:
-        class: SpiritDev\Bundle\DBoxUserBundle\Form\Type\UserPassInfoType
+        class: %spirit_dev_dbox_user_bundle.form.type.user_pass_info.class%
         tags:
             - { name: form.type, alias: user_pass_info }
 
     fos_user.resetting.form.handler:
-        class: SpiritDev\Bundle\DBoxUserBundle\Form\Handler\ResettingFormHandler
+        class: %fos_user.resetting.form.handler.class%
         arguments: [@fos_user.resetting.form, @request_stack, @fos_user.user_manager, @spirit_dev_dbox_user_bundle.ldap.ldap_driver, @doctrine.orm.entity_manager]
 #        public: false
+
+    spirit_dev_dbox_user_bundle.security.interactive_login_listener:
+        class: %spirit_dev_dbox_user_bundle.security.interactive_login_listener.class%
+#        arguments: [@fos_user.user_manager]
+        arguments: [@service_container, @fos_user.user_manager]
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login', method: 'onSecurityInteractiveLogin' }
