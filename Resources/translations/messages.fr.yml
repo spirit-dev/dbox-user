@@ -1,19 +1,90 @@
-# Login page
+pagetitle:
+    profile: Profil
+    checkmail: Vérifiez vos mails
+    requesterror: Erreur de requête
+    request: Requête
+    reset: Réinitialisation
+    login: Connexion
+
 login:
     forgotten:
         password:
             sentense: "Vous avez oublié votre mot de passe?"
-            link: suivez ce liens
+            link: Suivez ce lien
 
 # Password resetting
 resetting:
     email:
-        subject: EcosystemV2 Reset mot de passe
+        subject: EcosystemV2 Réinitialisation du mot de passe
         message: |
             Bonjour %username%!
 
-            Vous avez émis une requête de restauration de votre mot de passe.
-            Pour le restaurer - suivez ce liens %confirmationUrl%
+            Vous avez effectué une requête de réinitialisation du mot de passe pour votre compte.
+            Pour réinitialier votre mot de passe - Cliquez %confirmationUrl%
 
             Cordialement,
-            the Tools Team.
+            L'équipe Tools
+    flash:
+        success: Votre profil a bien été mis à jour
+
+profile:
+    pageheader: Profil
+    pass:
+        slotlabel: Changement de mot de passe
+        currentpass: Mot de passe actuel
+        newpass: Nouveau mot de passe
+        newpassverify: Verification
+        save: Mise à jour
+    info:
+        slotlabel: Mise à jour des informations
+        email: E-mail
+        firstname: Prénom
+        lastname: Nom
+        avatar: Avatar
+        submit: Mise à jour
+    settings:
+        slotlabel: Paramètres
+        skip_intro: Ne pas voir l'introduction
+        submit: Mise à jour
+    myinfo:
+        slotlabel: Mes informations
+        username: Nom d'utilisateur
+        email: E-Mail
+        firstname: Prénom
+        lastname: Nom
+        avatar: Avatar
+    gitinfo:
+        slotlabel: Informations - VCS
+        state: Etat
+        profileurl: Liens vers le profil
+    pminfo:
+        slotlabel: Informations - PM
+        state:
+            label: Etat
+            active: Actif
+            unactive: Désactivé
+        profileurl: Liens vers le profil
+        membership:
+            label: Adhésions
+            project: Projets
+            role: Role(s)
+
+flashbag:
+    edit_profile:
+        success: Votre profil a bien été mis à jour
+        error: Désolé une erreur s'est produite lors de la mise à jour de votre profil
+    edit_password:
+        success: Votre mot de passe a bien été mis à jour
+        error: Désolé une erreur s'est produite lors de la mise à jour de votre mot de passe
+        verification_error: Attention vos mots de passes de correspondent pas!
+        match_error: Désolé vous devez chois un mot de passe différent de l'ancien.
+        pass_error: Désolé votre mot de passe actuel n'est pas bon.
+
+mail:
+    global:
+        hello_user: Bonjour %firstname% %lastname% !
+        connect_app: Vous pouvez vous connecter à l'application en suivant ce lien :
+    profile_info:
+        slot1: Ce mail est ici pour vous confirmer la mise à jour de votre profil.
+    profile_pass:
+        slot1: Ce mail est ici pour vous confirmer la mise à jour de votre mot de passe.
