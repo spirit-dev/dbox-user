@@ -4,6 +4,10 @@
 
 {% block fos_user_content %}
 
+    <div class="row">
+        <h1 class="page-header text-center">{{ 'login.title'|trans }}</h1>
+    </div>
+
     {% if error %}
         <div class="row">
             <div class="col-sm-12">
@@ -25,24 +29,31 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="username">Username</label>
-
-                <div class="col-sm-offset-1 col-sm-9">
-                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"
-                           required="required"/>
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="input_user"><i
+                                    class="glyphicon glyphicon-user"></i></span>
+                        <input class="form-control" type="text" id="username" name="_username"
+                               value="{{ last_username }}"
+                               required="required" aria-describedby="input_user"
+                               placeholder="{{ 'login.username'|trans }}"/>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="password">Password</label>
-
-                <div class="col-sm-offset-1 col-sm-9">
-                    <input class="form-control" type="password" id="password" name="_password" required="required"/>
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="input_password"><i
+                                    class="glyphicon glyphicon-lock"></i></span>
+                        <input class="form-control" type="password" id="password" name="_password" required="required"
+                               aria-describedby="input_password" placeholder="{{ 'login.password'|trans }}"/>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-9">
+                <div class="col-sm-12">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" id="remember_me" name="_remember_me" value="on"/> Remember me
@@ -52,8 +63,8 @@
             </div>
 
             <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-9">
-                    <input class="btn btn-default" type="submit" id="_submit" name="_submit"
+                <div class="col-sm-12">
+                    <input class="btn btn-default btn-block" type="submit" id="_submit" name="_submit"
                            value="Submit" data-loading-text="Connecting..." autocomplete="off"
                            onclick="if($('#password').val() != '' && $('#username').val() != '') {$(this).button('loading');}"/>
                 </div>

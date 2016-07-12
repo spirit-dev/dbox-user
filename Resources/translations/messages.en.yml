@@ -7,10 +7,13 @@ pagetitle:
     login: Login
 
 login:
+    title: Please log in.
     forgotten:
         password:
             sentense: "You've forgot your password?"
             link: Follow this link
+    username: Username
+    password: Password
 
 # Password resetting
 resetting:
