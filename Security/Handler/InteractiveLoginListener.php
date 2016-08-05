@@ -6,17 +6,17 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *  
+ *
  * Since 2K10 until today
- *  
+ *
  * Hex            53 70 69 72 69 74 2d 44 65 76
- *  
+ *
  * By             Jean Bordat
  * Twitter        @Ji_Bay_
  * Mail           <bordat.jean@gmail.com>
- *  
+ *
  * File           InteractiveLoginListener.php
- * Updated the    09/06/16 10:20
+ * Updated the    05/08/16 16:34
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Security\Handler;
@@ -61,35 +61,46 @@ class InteractiveLoginListener {
         $username = $user->getUsername();
         if ($username != "admin" && $username != "sys") {
 
-            // Create gitlab user if not already done
-            if ($user->getGitLabId() == null) {
-                // Create gitlab user
-                $gitLabUser = $this->container->get('spirit_dev_dbox_portal_bundle.api.gitlab')->createUser($user);
-                $user->setGitLabId($gitLabUser['id']);
+            // Get current date
+            $now = new \DateTime();
+
+            // Check schedule sync
+            if ($now > $user->getNextSyncDate()) {
+
+                // Create gitlab user if not already done
+                if ($user->getGitLabId() == null) {
+                    // Create gitlab user
+                    $gitLabUser = $this->container->get('spirit_dev_dbox_portal_bundle.api.gitlab')->createUser($user);
+                    $user->setGitLabId($gitLabUser['id']);
+                }
+
+                // Create redmine user if not already done
+                if ($user->getRedmineId() == null) {
+                    // Create redmine user
+                    $redmineUser = $this->container->get('spirit_dev_dbox_portal_bundle.api.redmine')->createUser($user);
+                    $user->setRedmineId($redmineUser->{'id'});
+                }
+
+                // Create sonar user if not already done
+                if ($user->getSonarManaged() == null) {
+                    // Create Sonar user here
+                    $sonarUser = $this->container->get('spirit_dev_dbox_portal_bundle.api.sonar')->createUser($user);
+                    $user->setSonarManaged(true);
+                }
+
+                // Update DB user if necessary
+                // TODO Change condition
+                if ($user->getGitLabId() != null || $user->getRedmineId() == null || $user->getSonarManaged() == null) {
+                    // Updating next sync date
+                    $nextSyncDate = $now->add(new \DateInterval('P10D'));
+                    $user->setNextSyncDate($nextSyncDate);
+                    // Updating user
+                    $this->userManager->updateUser($user);
+                }
+
             }
 
-            // Create redmine user if not already done
-            if ($user->getRedmineId() == null) {
-                // Create redmine user
-                $redmineUser = $this->container->get('spirit_dev_dbox_portal_bundle.api.redmine')->createUser($user);
-                $user->setRedmineId($redmineUser->{'id'});
-            }
 
-            // Create jenkins user Deprecated;
-
-
-            // Create sonar user if not already done
-            if ($user->getSonarManaged() == null) {
-                // Create Sonar user here
-                $sonarUser = $this->container->get('spirit_dev_dbox_portal_bundle.api.sonar')->createUser($user);
-                $user->setSonarManaged(true);
-            }
-
-            // Update DB user if necessary
-            if ($user->getGitLabId() != null || $user->getRedmineId() == null || $user->getSonarManaged() == null) {
-                // Updating user
-                $this->userManager->updateUser($user);
-            }
         }
     }
 }

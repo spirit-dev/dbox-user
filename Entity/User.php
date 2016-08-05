@@ -6,17 +6,17 @@
  *   /_`_  ._._/___/ | _
  * . _//_//// /   /_.'/_'|/
  *    /
- *    
+ *
  * Since 2K10 until today
- *  
+ *
  * Hex            53 70 69 72 69 74 2d 44 65 76
- *  
+ *
  * By             Jean Bordat
  * Twitter        @Ji_Bay_
  * Mail           <bordat.jean@gmail.com>
- *  
+ *
  * File           User.php
- * Updated the    08/06/16 19:58
+ * Updated the    05/08/16 16:34
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Entity;
@@ -118,6 +118,13 @@ class User extends BaseUser implements LdapUserInterface {
      * @var string
      */
     private $imageName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $nextSyncDate;
 
     /**
      * User constructor.
@@ -377,6 +384,20 @@ class User extends BaseUser implements LdapUserInterface {
      */
     public function setImageName($imageName) {
         $this->imageName = $imageName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNextSyncDate() {
+        return $this->nextSyncDate;
+    }
+
+    /**
+     * @param mixed $nextSyncDate
+     */
+    public function setNextSyncDate($nextSyncDate) {
+        $this->nextSyncDate = $nextSyncDate;
     }
 
 }
