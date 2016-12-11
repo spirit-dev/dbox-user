@@ -16,7 +16,7 @@
  * Mail           <bordat.jean@gmail.com>
  *
  * File           User.php
- * Updated the    05/08/16 16:34
+ * Updated the    11/12/16 16:11
  */
 
 namespace SpiritDev\Bundle\DBoxUserBundle\Entity;
@@ -83,7 +83,7 @@ class User extends BaseUser implements LdapUserInterface {
     private $redmineId;
 
     /**
-     * @@ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $sonarManaged;
 
